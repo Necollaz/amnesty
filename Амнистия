@@ -1,0 +1,64 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        Country country = new Country();
+        country.FilteredCriminals();
+        Console.ReadKey();
+    }
+}
+
+public class Criminal
+{
+    public Criminal(string initials, string crime)
+    {
+        Initials = initials;
+        Crime = crime;
+    }
+
+    public string Initials { get; private set; }
+    public string Crime { get; private set; }
+
+    public void ShowInfo()
+    {
+        Console.WriteLine($"Преступник: ФИО - {Initials}, преступление - {Crime}.");
+    }
+}
+
+public class Country
+{
+    private List<Criminal> _criminals = new List<Criminal>
+    {
+        new Criminal("Виктор Семенович Петров", "Антиправительственное"),
+        new Criminal("Джеймс Роберт Маккензи", "Терроризм"),
+        new Criminal("Сергей Иванович Дубин", "Антиправительственное"),
+        new Criminal("Ларс Густав Йоханссон", "Антиправительственное"),
+        new Criminal("Рахим Али Бин Хамед", "Антиправительственное"),
+        new Criminal("Мариана Элизабет Веббер", "Терроризм"),
+        new Criminal("Карлос Энрике Де Силва", "Антиправительственное"),
+        new Criminal("Саори Такахаши", "Антиправительственное"),
+    };
+
+    public void FilteredCriminals()
+    {
+        Console.WriteLine("Список до амнистии: ");
+
+        foreach (var criminal in _criminals)
+        {
+            criminal.ShowInfo();
+        }
+
+        var filteredCriminals = _criminals.Where(criminal => criminal.Crime != "Антиправительственное").ToList();
+
+        Console.WriteLine("Список после амнистии: ");
+
+        foreach (var criminal in filteredCriminals)
+        {
+            criminal.ShowInfo();
+        }
+    }
+}
