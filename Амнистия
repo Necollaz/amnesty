@@ -6,8 +6,8 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Country country = new Country();
-        country.FilteredCriminals();
+        Court court = new Court();
+        court.AmnestyCriminals();
         Console.ReadKey();
     }
 }
@@ -29,21 +29,26 @@ public class Criminal
     }
 }
 
-public class Country
+public class Court
 {
-    private List<Criminal> _criminals = new List<Criminal>
-    {
-        new Criminal("Виктор Семенович Петров", "Антиправительственное"),
-        new Criminal("Джеймс Роберт Маккензи", "Терроризм"),
-        new Criminal("Сергей Иванович Дубин", "Антиправительственное"),
-        new Criminal("Ларс Густав Йоханссон", "Антиправительственное"),
-        new Criminal("Рахим Али Бин Хамед", "Антиправительственное"),
-        new Criminal("Мариана Элизабет Веббер", "Терроризм"),
-        new Criminal("Карлос Энрике Де Силва", "Антиправительственное"),
-        new Criminal("Саори Такахаши", "Антиправительственное"),
-    };
+    private List<Criminal> _criminals;
 
-    public void FilteredCriminals()
+    public Court()
+    {
+        _criminals = new List<Criminal>
+        {
+            new Criminal("Виктор Семенович Петров", "Антиправительственное"),
+            new Criminal("Джеймс Роберт Маккензи", "Терроризм"),
+            new Criminal("Сергей Иванович Дубин", "Антиправительственное"),
+            new Criminal("Ларс Густав Йоханссон", "Антиправительственное"),
+            new Criminal("Рахим Али Бин Хамед", "Антиправительственное"),
+            new Criminal("Мариана Элизабет Веббер", "Терроризм"),
+            new Criminal("Карлос Энрике Де Силва", "Антиправительственное"),
+            new Criminal("Саори Такахаши", "Антиправительственное")
+        };
+    }
+
+    public void AmnestyCriminals()
     {
         Console.WriteLine("Список до амнистии: ");
 
