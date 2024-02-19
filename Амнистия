@@ -7,7 +7,7 @@ internal class Program
     private static void Main(string[] args)
     {
         Court court = new Court();
-        court.AmnestyCriminals();
+        court.AmnestyPeoples();
         Console.ReadKey();
     }
 }
@@ -48,8 +48,10 @@ public class Court
         };
     }
 
-    public void AmnestyCriminals()
+    public void AmnestyPeoples()
     {
+        string message = "Антиправительственное";
+
         Console.WriteLine("Список до амнистии: ");
 
         foreach (var criminal in _criminals)
@@ -57,11 +59,11 @@ public class Court
             criminal.ShowInfo();
         }
 
-        var filteredCriminals = _criminals.Where(criminal => criminal.Crime != "Антиправительственное").ToList();
+        _criminals = _criminals.Where(criminal => criminal.Crime != message).ToList();
 
         Console.WriteLine("Список после амнистии: ");
 
-        foreach (var criminal in filteredCriminals)
+        foreach (var criminal in _criminals)
         {
             criminal.ShowInfo();
         }
